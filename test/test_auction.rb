@@ -56,6 +56,7 @@ AUCTIONS_BIN << {
 describe Beway::Auction do
 
   shared_examples_for "a valid auction" do
+
     describe "data retrieval" do
       it "should have the current bid" do
         auction.current_bid.should eq(data[:current_bid])
@@ -81,46 +82,10 @@ describe Beway::Auction do
         auction.min_bid.should eq(data[:min_bid])
       end
 
-      it "should have the buy_it_now_only? attribute set" do
-        auction.buy_it_now_only?.should be_false
+      it "should have the has_bid_button? attribute set" do
+        auction.has_bid_button?.should be_true
       end
     end
-  end
-
-  shared_examples_for "a buy-it-now only auction" do
-    describe "data retrieval" do
-      it "should have the buy_it_now_only? attribute set" do
-        auction.buy_it_now_only?.should be_true
-      end
-    end
-  end
-
-  context "with any url" do
-    url = 'http://www.google.com/'
-    a = Beway::Auction.new(url)
-
-    it "should initialize with a string, the file/url to parse" do
-      a.should be_a Beway::Auction
-      a.url.should be_a String
-    end
-
-    it "should keep a nokogiri document of given url/file" do
-      a.doc.should be_a Nokogiri::HTML::Document
-    end
-
-    it "should refresh the document" do
-      a.refresh_doc
-      a.doc.should be_a Nokogiri::HTML::Document
-    end
-
-    it "should know when it last updated" do
-      t = a.last_updated
-      a.last_updated.should be_an_instance_of Time
-      sleep 1
-      a.refresh_doc
-      a.last_updated.should > t
-    end
-
   end
 
   AUCTIONS_VALID.each do |a|
@@ -134,8 +99,8 @@ describe Beway::Auction do
 
   AUCTIONS_BIN.each do |a|
     describe "buy it now auction - #{a[:description]}" do
-      it_should_behave_like "a buy-it-now only auction" do 
-        let(:auction) { Beway::Auction.new(a[:url]) }
+      it "should fail to initialize" do
+        expect { Beway::Auction.new(a[:url]) }.to raise_error(Beway::InvalidUrlError)
       end
     end
   end
