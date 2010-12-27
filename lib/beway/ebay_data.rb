@@ -48,5 +48,9 @@ module Beway
       Time.parse(time_str).localtime
     end
 
+    def seconds_to(some_ebay_time)
+      some_ebay_time - time
+    end
+
   end
 end

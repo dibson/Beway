@@ -59,7 +59,7 @@ module Beway
     def end_time
       time_str = node_text(time_node).match(/\(([^)]*)\)/)[1]
       raise AuctionParseError unless time_str
-      Time.parse(time_str).localtime
+      Time.parse(time_str)
     end
 
     def auction_number

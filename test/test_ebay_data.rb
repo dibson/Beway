@@ -14,4 +14,10 @@ describe Beway::EbayData do
     (ebay.time - ebay.official_time).should be > -2
   end
 
+  it "should tell us the distance to an ebay time" do
+    ebay = Beway::EbayData.instance
+    (ebay.seconds_to(ebay.time + 10) - 10).should be < 1
+    (ebay.seconds_to(ebay.time + 10) - 10).should be > -1
+  end
+
 end
