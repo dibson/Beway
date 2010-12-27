@@ -60,7 +60,7 @@ module Beway
 
     def auction_number
       canonical_url_node = @doc.at_css('link[@rel = "canonical"]')
-      raise ParserError, "Couldn't find canonical URL" unless canonical_url_node
+      raise BewayParseError, "Couldn't find canonical URL" unless canonical_url_node
       canonical_url_node.attr('href')[/\d+$/]
     end
 
