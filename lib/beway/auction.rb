@@ -31,38 +31,27 @@ module Beway
     end
 
     def current_bid
-
       # list of ways to get the bid.
-      # grab the xpath from the doc, if found, use the associated lambda to grab the data
-      bid_xpath_lambda = [
-        ["//th[contains(text(),'Current bid:')]", lambda { |n| n.parent.at_css('td') } ],
-        ["//th[contains(text(),'Starting bid:')]", lambda { |n| n.parent.at_css('td') } ],
-        ["//th[contains(text(),'Price:')]", lambda { |n| n.parent.at_css('td') } ],
-        ["//td[contains(text(),'Starting bid:')]", lambda { |n| n.next_sibling } ],
-        ["//td[contains(text(),'Winning bid:')]", lambda { |n| n.next_sibling } ],
+      xpaths = [
+        "//th[contains(text(),'Current bid:')]",
+        "//th[contains(text(),'Starting bid:')]",
+        "//th[contains(text(),'Price:')]",
+        "//td[contains(text(),'Starting bid:')]",
+        "//td[contains(text(),'Winning bid:')]",
       ]
 
-      bid = bid_xpath_lambda.reduce(nil) do |bid, xl|
-        if bid.nil?
-          xpath, node_to_bid = xl
+      bid_node = xpaths.reduce(nil) do |node, xpath|
+        if node.nil?
           node = @doc.at_xpath(xpath)
-          if node.nil?
-            nil
-          else
-            node_to_bid.call(node)
-          end
-        else
-          bid
+          node = node.next_sibling unless node.nil?
         end
+        node
       end
 
-      raise AuctionParseError, "Couldn't find current/starting bid header in document" if bid.nil?
-      bid_text = node_text(bid)
-
-      return bid_text if not complete?
-
-      return bid_text[/^[^\[]+/].strip
-
+      raise AuctionParseError, "Couldn't find current/starting bid header in document" if bid_node.nil?
+      bid_text = node_text(bid_node)
+      bid_text = bid_text[/^[^\[]+/].strip if complete?
+      return bid_text
     end
 
     def description
