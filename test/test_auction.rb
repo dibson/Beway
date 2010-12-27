@@ -48,25 +48,25 @@ describe Beway::Auction do
         auction.current_bid.should eq(data[:current_bid])
       end
 
-    it "should have the description" do
-      auction.description.should eq(data[:description])
-    end
+      it "should have the description" do
+        auction.description.should eq(data[:description])
+      end
 
-    it "should have the time left" do
-      auction.time_left.should eq(data[:time_left])
-    end
+      it "should have the time left" do
+        auction.time_left.should eq(data[:time_left])
+      end
 
-    it "should have the end time" do
-      auction.end_time.should eq(data[:end_time])
-    end
+      it "should have the end time" do
+        auction.end_time.should eq(data[:end_time])
+      end
 
-    it "should have the auction number" do
-      auction.auction_number.should eq(data[:auction_number])
-    end
+      it "should have the auction number" do
+        auction.auction_number.should eq(data[:auction_number])
+      end
 
-    it "should have the minimum bid" do
-      auction.min_bid.should eq(data[:min_bid])
-    end
+      it "should have the minimum bid" do
+        auction.min_bid.should eq(data[:min_bid])
+      end
     end
   end
 
