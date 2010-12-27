@@ -22,9 +22,13 @@ module Beway
       user = prompt_username
       pass = prompt_password
       bidder = Bidder.new(user, pass)
+      puts "Logging in..."
       bidder.login
-      if not bidder.logged_in
+      if bidder.logged_in
+        puts "          ...success"
+      else
         puts "Bad ebay username/password combo!  Please try again."
+        exit
       end
 
       # bid prep
