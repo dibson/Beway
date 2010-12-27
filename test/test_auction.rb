@@ -3,7 +3,7 @@ require_relative '../lib/beway/auction'
 HTML_DIR = File.dirname(__FILE__) + File::SEPARATOR + 'html' + File::SEPARATOR
 
 AUCTIONS_VALID = []
-AUCTIONS_INVALID = []
+AUCTIONS_BIN = []
 
 AUCTIONS_VALID << {
   :url => HTML_DIR + 'pink-sweater-bid-bin.html',
@@ -42,12 +42,14 @@ AUCTIONS_VALID << {
   :auction_number => '250740721413'
 }
 
-AUCTIONS_INVALID << {
-  :url => HTML_DIR + 'mens-cardigans-duthch-bin.html',
+AUCTIONS_BIN << {
+  :url => HTML_DIR + 'mens-cardigans-dutch-bin.html',
+  :description => "St. John's Bay man Cardigans Size: S, M, L, XL, 2XL NEW",
 }
 
-AUCTIONS_INVALID << {
+AUCTIONS_BIN << {
   :url => HTML_DIR + 'spring-mercer-bin-mo.html',
+  :description => 'NWT Mens SPRING+MERCER L/S Shirt NEW Sz Small (S)',
 }
 
 
@@ -77,6 +79,18 @@ describe Beway::Auction do
 
       it "should have the minimum bid" do
         auction.min_bid.should eq(data[:min_bid])
+      end
+
+      it "should have the buy_it_now_only? attribute set" do
+        auction.buy_it_now_only?.should be_false
+      end
+    end
+  end
+
+  shared_examples_for "a buy-it-now only auction" do
+    describe "data retrieval" do
+      it "should have the buy_it_now_only? attribute set" do
+        auction.buy_it_now_only?.should be_true
       end
     end
   end
@@ -114,6 +128,14 @@ describe Beway::Auction do
       it_should_behave_like "a valid auction" do
         let(:auction) { Beway::Auction.new(a[:url]) }
         let(:data) { a }
+      end
+    end
+  end
+
+  AUCTIONS_BIN.each do |a|
+    describe "buy it now auction - #{a[:description]}" do
+      it_should_behave_like "a buy-it-now only auction" do 
+        let(:auction) { Beway::Auction.new(a[:url]) }
       end
     end
   end

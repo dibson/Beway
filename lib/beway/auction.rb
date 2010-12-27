@@ -64,6 +64,11 @@ module Beway
       canonical_url_node.attr('href')[/\d+$/]
     end
 
+    def buy_it_now_only?
+      place_bid_button = @doc.at_css('input#but_v4-7')
+      return (place_bid_button.nil?) ? true : false
+    end
+
     private
 
     def time_node
