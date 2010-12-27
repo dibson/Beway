@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 module Beway
-  class ParseError < StandardError; end;
+  class AuctionParseError < StandardError; end;
   class InvalidUrlError < StandardError; end;
 
   class Auction
@@ -24,15 +24,15 @@ module Beway
       th = @doc.at_xpath("//th[contains(text(),'Current bid:')]")
       th = @doc.at_xpath("//th[contains(text(),'Starting bid:')]") unless th
       th = @doc.at_xpath("//th[contains(text(),'Price:')]") unless th
-      raise ParseError, "Couldn't find current/starting bid header in document" if th.nil?
+      raise AuctionParseError, "Couldn't find current/starting bid header in document" if th.nil?
       current_bid = th.parent.at_css('td')
-      raise ParseError, "Couldn't find current/starting bid data in document" if current_bid.nil?
+      raise AuctionParseError, "Couldn't find current/starting bid data in document" if current_bid.nil?
       node_text(current_bid)
     end
 
     def description
       desc = @doc.at_css('b#mainContent h1')
-      raise ParseError, "Couldn't find description in document" if desc.nil?
+      raise AuctionParseError, "Couldn't find description in document" if desc.nil?
       desc.inner_text.strip
     end
 
@@ -40,19 +40,19 @@ module Beway
       time_str = node_text(time_node)
       time_str = time_str[/^[^(]*/].strip
       time_ar = time_str.split
-      raise ParseError, "Didn't find hour marker where expected" unless time_ar[1] == 'h'
-      raise ParseError, "Didn't find minute marker where expected" unless time_ar[3] == 'm'
-      raise ParseError, "Didn't find second marker where expected" unless time_ar[5] == 's'
+      raise AuctionParseError, "Didn't find hour marker where expected" unless time_ar[1] == 'h'
+      raise AuctionParseError, "Didn't find minute marker where expected" unless time_ar[3] == 'm'
+      raise AuctionParseError, "Didn't find second marker where expected" unless time_ar[5] == 's'
       time_ar[0] + 'h ' + time_ar[2] + 'm ' + time_ar[4] + 's'
     end
 
     def min_bid
       max_label = @doc.at_xpath("//th/label[contains(text(),'Your max bid:')]")
-      raise ParseError, "Couldn't find max bid label in document" unless max_label
+      raise AuctionParseError, "Couldn't find max bid label in document" unless max_label
       min_bid_node = max_label.parent.parent.next_sibling
-      raise ParseError, "Couldn't find minimum bid in document" unless min_bid_node
+      raise AuctionParseError, "Couldn't find minimum bid in document" unless min_bid_node
       md = /\(Enter ([^)]*) or more\)/.match min_bid_node.inner_text
-      raise ParseError, "Min Bid data not in expected format" if md.nil?
+      raise AuctionParseError, "Min Bid data not in expected format" if md.nil?
       md[1]
     end
 
@@ -62,7 +62,7 @@ module Beway
 
     def auction_number
       canonical_url_node = @doc.at_css('link[@rel = "canonical"]')
-      raise ParseError, "Couldn't find canonical URL" unless canonical_url_node
+      raise AuctionParseError, "Couldn't find canonical URL" unless canonical_url_node
       canonical_url_node.attr('href')[/\d+$/]
     end
 
@@ -75,9 +75,9 @@ module Beway
 
     def time_node
       th = @doc.at_xpath("//th[contains(text(),'Time left:')]")
-      raise ParseError, "Couldn't find Time Left header" unless th
+      raise AuctionParseError, "Couldn't find Time Left header" unless th
       node = th.parent.at_css('td')
-      raise ParseError, "Couldn't find Time node" unless node
+      raise AuctionParseError, "Couldn't find Time node" unless node
       node
     end
 
