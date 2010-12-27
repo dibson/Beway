@@ -71,7 +71,7 @@ describe Beway::Auction do
       end
 
       it "should have the end time" do
-        auction.end_time.should eq(data[:end_time])
+        auction.end_time.should eq(Time.parse(data[:end_time]))
       end
 
       it "should have the auction number" do
