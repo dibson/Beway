@@ -71,7 +71,7 @@ AUCTIONS_COMPLETE << {
   :auction_number => '270682427528',
 }
 AUCTIONS_COMPLETE << {
-  :url => HTML_DIR + 'cashmere-sweater.html',
+  :url => HTML_DIR + 'cashmere-sweater-complete.html',
   :description => 'Mens 100% CASHMERE SWEATER Gray 3 Button Collar L to XL',
   :current_bid => 'US $52.01',
   :min_bid => nil,
@@ -110,18 +110,24 @@ describe Beway::Auction do
       it "should have the minimum bid" do
         auction.min_bid.should eq(data[:min_bid])
       end
-
-      it "should have the has_bid_button? attribute set" do
-        auction.has_bid_button?.should be_true
-      end
     end
   end
 
   AUCTIONS_VALID.each do |a|
     describe "valid auction - #{a[:description]}" do
+      auction = Beway::Auction.new(a[:url])
+
       it_should_behave_like "a valid auction" do
-        let(:auction) { Beway::Auction.new(a[:url]) }
+        let(:auction) { auction }
         let(:data) { a }
+      end
+
+      it "should have the has_bid_button? attribute set" do
+        auction.has_bid_button?.should be_true
+      end
+
+      it "should not be marked as complete" do
+        auction.complete?.should be_false
       end
     end
   end
@@ -137,14 +143,19 @@ describe Beway::Auction do
   AUCTIONS_COMPLETE.each do |a|
     describe "completed auction - #{a[:description]}" do
 
+      auction = Beway::Auction.new(a[:url])
+
       it_should_behave_like "a valid auction" do
-        let(:auction) { Beway::Auction.new(a[:url]) }
+        let(:auction) { auction }
         let(:data) { a }
       end
 
       it "should be marked as complete" do
-        auction = Beway::Auction.new(a[:url])
         auction.complete?.should be_true
+      end
+
+      it "should not has_bid_button?" do
+        auction.has_bid_button?.should be_false
       end
     end
   end
