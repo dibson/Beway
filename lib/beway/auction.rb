@@ -69,7 +69,7 @@ module Beway
     end
 
     def has_bid_button?
-      place_bid_button = @doc.at_css('input#but_v4-7')
+      place_bid_button = @doc.at_xpath('//form//input[@value="Place bid"]')
       return (place_bid_button.nil?) ? false : true
     end
 
