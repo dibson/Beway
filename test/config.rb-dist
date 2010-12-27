@@ -1,0 +1,4 @@
+VALID_CREDS = {
+  :username => 'some_username',
+  :password => 'some_password' 
+}
