@@ -4,6 +4,9 @@ module Beway
   
   class BidderError < StandardError; end;
 
+  # Bidder
+  #
+  # Wrapper for Mechanize to perform actions on ebay
   class Bidder
 
     EBAY_HOME = 'http://www.ebay.com'
@@ -12,6 +15,7 @@ module Beway
     attr_writer :password
     attr_reader :agent, :logged_in, :last_login_time
 
+    # create a bidder with login credentials
     def initialize(username, password)
       @username = username
       @password = password
@@ -20,6 +24,8 @@ module Beway
       @last_login_time = nil
     end
 
+    # log user in with credentials.
+    # returns boolean representing success
     def login
       ebay_home_page = @agent.get(EBAY_HOME)
 
@@ -32,6 +38,7 @@ module Beway
       return @logged_in
     end
 
+    # bid amount on given auction
     def bid(auction_url, amount)
       login unless @logged_in
 
@@ -60,6 +67,7 @@ module Beway
 
     private
 
+    # is page a login page?
     def is_login_page?(page)
       if page.form_with( :name => 'SignInForm')
         true
@@ -68,8 +76,9 @@ module Beway
       end
     end
 
-    def handle_login_page(page)
-      login_form = page.form_with( :name => 'SignInForm')
+    # log into ebay as prompted by login_page
+    def handle_login_page(login_page)
+      login_form = login_page.form_with( :name => 'SignInForm')
       raise BidderError, "Couldn't find login form" unless login_form
       login_form.userid = @username
       login_form.pass = @password

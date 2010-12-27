@@ -6,6 +6,9 @@ module Beway
 
   class EbayDataParseError < StandardError; end;
 
+  # EbayData
+  #
+  # Singleton class to handle ebay queries that are not auction-related.
   class EbayData
 
     include Singleton
@@ -17,20 +20,26 @@ module Beway
       @last_time_offset = nil
     end
 
+    # The current ebay time as calculated by an offset from localtime.
     def time
       Time.now.localtime + self.time_offset
     end
 
+    # The localtime offset from ebay time.
+    #
+    # add this offset to localtime to get an estimated ebay time
     def time_offset
       calc_time_offset unless @time_offset
       @time_offset
     end
 
+    # Calculate the ebay time offset
     def calc_time_offset
       @last_time_offset = Time.now
       @time_offset = official_time - Time.now.localtime 
     end
 
+    # Retrieve the official ebay time
     def official_time
       doc = Nokogiri::HTML(open(EBAY_OFFICIAL_TIME_URL))
 
@@ -48,6 +57,7 @@ module Beway
       Time.parse(time_str).localtime
     end
 
+    # Returns the number of seconds to some_ebay_time
     def seconds_to(some_ebay_time)
       some_ebay_time - time
     end

@@ -5,6 +5,10 @@ module Beway
   class AuctionParseError < StandardError; end;
   class InvalidUrlError < StandardError; end;
 
+  # Auction
+  #
+  # Represents an ebay auction.  Can only be instantiated for true auctions
+  # (no buy-it-now-only sales) and completed auctions.
   class Auction
 
     attr_reader :url, :doc, :last_updated
@@ -15,21 +19,25 @@ module Beway
       raise InvalidUrlError unless valid_auction?
     end
 
+    # can we represent this auction?
     def valid_auction?
       return true if complete? or has_bid_button?
       return false
     end
 
+    # has bidding ended yet?
     def complete?
       complete_span = @doc.at_xpath('//span[contains(text(), "Bidding has ended on this item")]')
       return (complete_span.nil?) ? false : true
     end
 
+    # fetch the url again
     def refresh_doc
       @doc = Nokogiri::HTML(open(@url))
       @last_updated = Time.now
     end
 
+    # parsing method, returns a string
     def current_bid
       # list of ways to get the bid.
       xpaths = [
@@ -54,12 +62,14 @@ module Beway
       return bid_text
     end
 
+    # parsing method, returns a string
     def description
       desc = @doc.at_css('b#mainContent h1')
       raise AuctionParseError, "Couldn't find description in document" if desc.nil?
       desc.inner_text.strip
     end
 
+    # parsing method, returns a string
     def time_left
       return nil if complete?
 
@@ -72,6 +82,7 @@ module Beway
       time_ar[0] + 'h ' + time_ar[2] + 'm ' + time_ar[4] + 's'
     end
 
+    # parsing method, returns a float
     def min_bid
       return nil if complete?
 
@@ -84,6 +95,7 @@ module Beway
       md[1][/\d*\.\d*/].to_f
     end
 
+    # parsing method, returns a Time object
     def end_time
       text = node_text(time_node)
       md = text.match(/\(([^)]*)\)/)
@@ -96,12 +108,14 @@ module Beway
       Time.parse(time_str)
     end
 
+    # parsing method, returns a string
     def auction_number
       canonical_url_node = @doc.at_css('link[@rel = "canonical"]')
       raise AuctionParseError, "Couldn't find canonical URL" unless canonical_url_node
       canonical_url_node.attr('href')[/\d+$/]
     end
 
+    # parsming method, returns boolean
     def has_bid_button?
       place_bid_button = @doc.at_xpath('//form//input[@value="Place bid"]')
       return (place_bid_button.nil?) ? false : true
@@ -109,6 +123,7 @@ module Beway
 
     private
 
+    # fetch the node containing the end time
     def time_node
       if complete?
         td = @doc.at_xpath("//td[contains(text(),'Ended:')]")
@@ -124,6 +139,7 @@ module Beway
       node
     end
 
+    # a string of all text nodes below n, concatenated
     def node_text(n)
       t = ''
       n.traverse { |e| t << ' ' + e.to_s if e.text? }

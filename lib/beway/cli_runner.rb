@@ -2,6 +2,9 @@ require_relative '../beway.rb'
 
 module Beway
 
+  # CliRunner
+  #
+  # A UI for the Beway module to snipe an ebay auction
   class CliRunner
 
     BID_THRESHOLD = 10
