@@ -22,11 +22,11 @@ module Beway
     end
 
     def time_offset
-      set_time_offset unless @time_offset
+      calc_time_offset unless @time_offset
       @time_offset
     end
 
-    def set_time_offset
+    def calc_time_offset
       @last_time_offset = Time.now
       @time_offset = official_time - Time.now.localtime 
     end
