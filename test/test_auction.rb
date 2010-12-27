@@ -6,7 +6,16 @@ AUCTION_MENS_CARDIGAN_DUTCH_BIN = HTML_DIR + 'mens-cardigans-duthch-bin.html'
 AUCTION_PINK_SWEATER_BID_BIN = HTML_DIR + 'pink-sweater-bid-bin.html'
 AUCTION_SPRING_MERCER_BIN_MO = HTML_DIR + 'spring-mercer-bin-mo.html'
 
-AUCTION_POLO_LAMBS_WOOL = HTML_DIR + 'polo-lambs-wool.html'
+AUCTION_POLO_LAMBS_WOOL = {
+  :url => HTML_DIR + 'polo-lambs-wool.html',
+  :description => 'NEW POLO RALPH LAUREN SWEATER MENS SMALL S LAMBSWOOL',
+  :current_bid => 'US $27.00',
+  :min_bid => 'US $28.00',
+  :time_left => '3h 35m 33s',
+  :end_time => 'Dec 15, 2010 10:20:09 PST',
+  :auction_number => '380297207180'
+}
+
 AUCTION_XMAS_SWEATER = {
   :url => HTML_DIR + 'xmas-sweater.html',
   :current_bid => 'US $5.00',
@@ -79,6 +88,13 @@ describe Beway::Auction do
     it_should_behave_like "a valid auction" do
       let(:auction) { Beway::Auction.new(AUCTION_XMAS_SWEATER[:url]) }
       let(:data) { AUCTION_XMAS_SWEATER }
+    end
+  end
+
+  describe "auction - polo lambs wool" do
+    it_should_behave_like "a valid auction" do
+      let(:auction) { Beway::Auction.new(AUCTION_POLO_LAMBS_WOOL[:url]) }
+      let(:data) { AUCTION_POLO_LAMBS_WOOL }
     end
   end
 
