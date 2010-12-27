@@ -2,9 +2,23 @@ require_relative '../lib/beway/auction'
 
 HTML_DIR = File.dirname(__FILE__) + File::SEPARATOR + 'html' + File::SEPARATOR
 
-AUCTION_MENS_CARDIGAN_DUTCH_BIN = HTML_DIR + 'mens-cardigans-duthch-bin.html'
-AUCTION_PINK_SWEATER_BID_BIN = HTML_DIR + 'pink-sweater-bid-bin.html'
-AUCTION_SPRING_MERCER_BIN_MO = HTML_DIR + 'spring-mercer-bin-mo.html'
+AUCTION_MENS_CARDIGAN_DUTCH_BIN = {
+  :url => HTML_DIR + 'mens-cardigans-duthch-bin.html',
+}
+
+AUCTION_PINK_SWEATER_BID_BIN = {
+  :url => HTML_DIR + 'pink-sweater-bid-bin.html',
+  :description => 'ALFANI  MENS SWEATER PINK SMALL  NEW WITH TAGS',
+  :current_bid => 'US $14.99',
+  :min_bid => 'US $14.99',
+  :time_left => '3h 28m 33s',
+  :end_time => 'Dec 15, 2010 10:10:36 PST',
+  :auction_number => '250740721413'
+}
+
+AUCTION_SPRING_MERCER_BIN_MO = {
+  :url => HTML_DIR + 'spring-mercer-bin-mo.html',
+}
 
 AUCTION_POLO_LAMBS_WOOL = {
   :url => HTML_DIR + 'polo-lambs-wool.html',
@@ -84,17 +98,24 @@ describe Beway::Auction do
 
   end
 
-  describe "auction - x-mas sweater" do
+  describe "valid auction - x-mas sweater" do
     it_should_behave_like "a valid auction" do
       let(:auction) { Beway::Auction.new(AUCTION_XMAS_SWEATER[:url]) }
       let(:data) { AUCTION_XMAS_SWEATER }
     end
   end
 
-  describe "auction - polo lambs wool" do
+  describe "valid auction - polo lambs wool" do
     it_should_behave_like "a valid auction" do
       let(:auction) { Beway::Auction.new(AUCTION_POLO_LAMBS_WOOL[:url]) }
       let(:data) { AUCTION_POLO_LAMBS_WOOL }
+    end
+  end
+
+  describe "valid auction - pink sweater w/ bin option" do
+    it_should_behave_like "a valid auction" do
+      let(:auction) { Beway::Auction.new(AUCTION_PINK_SWEATER_BID_BIN[:url]) }
+      let(:data) { AUCTION_PINK_SWEATER_BID_BIN }
     end
   end
 
