@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Beway::EbayData</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/beway/ebay_data_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/beway/ebay_data.rb">lib/beway/ebay_data.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-calc_time_offset">#calc_time_offset</a></li>
+					
+					<li><a href="#method-i-official_time">#official_time</a></li>
+					
+					<li><a href="#method-i-seconds_to">#seconds_to</a></li>
+					
+					<li><a href="#method-i-time">#time</a></li>
+					
+					<li><a href="#method-i-time_offset">#time_offset</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+			<div id="includes-section" class="section">
+				<h3 class="section-header">Included Modules</h3>
+				<ul class="link-list">
+				
+				
+					<li><span class="include">Singleton</span></li>
+				
+				
+				</ul>
+			</div>
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README.html">README</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../Beway.html">Beway</a></li>
+				
+					<li><a href="../Beway/Auction.html">Beway::Auction</a></li>
+				
+					<li><a href="../Beway/AuctionParseError.html">Beway::AuctionParseError</a></li>
+				
+					<li><a href="../Beway/Bidder.html">Beway::Bidder</a></li>
+				
+					<li><a href="../Beway/BidderError.html">Beway::BidderError</a></li>
+				
+					<li><a href="../Beway/CliRunner.html">Beway::CliRunner</a></li>
+				
+					<li><a href="../Beway/EbayData.html">Beway::EbayData</a></li>
+				
+					<li><a href="../Beway/EbayDataParseError.html">Beway::EbayDataParseError</a></li>
+				
+					<li><a href="../Beway/InvalidUrlError.html">Beway::InvalidUrlError</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Beway::EbayData</h1>
+
+		<div id="description">
+			<p>
+<a href="EbayData.html">EbayData</a>
+</p>
+<p>
+Singleton class to handle ebay queries that are not auction-related.
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="EBAY_OFFICIAL_TIME_URL">EBAY_OFFICIAL_TIME_URL</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/beway/ebay_data.rb, line 18</span>
+18:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
+19:       <span class="ruby-ivar">@time_offset</span> = <span class="ruby-keyword kw">nil</span>
+20:       <span class="ruby-ivar">@last_time_offset</span> = <span class="ruby-keyword kw">nil</span>
+21:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="calc-time-offset-method" class="method-detail ">
+				<a name="method-i-calc_time_offset"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">calc_time_offset</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Calculate the ebay time offset
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="calc-time-offset-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/beway/ebay_data.rb, line 37</span>
+37:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">calc_time_offset</span>
+38:       <span class="ruby-ivar">@last_time_offset</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+39:       <span class="ruby-ivar">@time_offset</span> = <span class="ruby-identifier">official_time</span> <span class="ruby-operator">-</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">localtime</span> 
+40:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="official-time-method" class="method-detail ">
+				<a name="method-i-official_time"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">official_time</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Retrieve the official ebay time
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="official-time-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/beway/ebay_data.rb, line 43</span>
+43:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">official_time</span>
+44:       <span class="ruby-identifier">doc</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">HTML</span>(<span class="ruby-identifier">open</span>(<span class="ruby-constant">EBAY_OFFICIAL_TIME_URL</span>))
+45: 
+46:       <span class="ruby-identifier">time_label</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">at_xpath</span>(<span class="ruby-value str">'//p[contains(text(), &quot;The official eBay Time is now:&quot;)]'</span>)
+47: 
+48:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">EbayDataParseError</span>, <span class="ruby-value str">&quot;Couldn't find time label&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">time_label</span>
+49: 
+50:       <span class="ruby-identifier">time_node</span> = <span class="ruby-identifier">time_label</span>.<span class="ruby-identifier">next_sibling</span>.<span class="ruby-identifier">next_sibling</span>
+51:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">EbayDataParseError</span>, <span class="ruby-value str">&quot;Couldn't find time node&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">time_node</span>
+52: 
+53:       <span class="ruby-identifier">time_str</span> = <span class="ruby-identifier">time_node</span>.<span class="ruby-identifier">inner_text</span>
+54:       <span class="ruby-identifier">time_re</span> = <span class="ruby-regexp re">/(Sun|Mon|Tues|Wednes|Thurs|Fri|Satur)day, (January|February|March|April|May|June|July|August|September|October|December) \d\d, 20\d\d \d\d:\d\d:\d\d PST/</span>
+55:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">EbayDataParseError</span>, <span class="ruby-value str">&quot;Time in unexpected format&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">time_re</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">time_str</span>)
+56: 
+57:       <span class="ruby-constant">Time</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">time_str</span>).<span class="ruby-identifier">localtime</span>
+58:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="seconds-to-method" class="method-detail ">
+				<a name="method-i-seconds_to"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">seconds_to</span><span
+						class="method-args">(some_ebay_time)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns the number of seconds to some_ebay_time
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="seconds-to-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/beway/ebay_data.rb, line 61</span>
+61:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">seconds_to</span>(<span class="ruby-identifier">some_ebay_time</span>)
+62:       <span class="ruby-identifier">some_ebay_time</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">time</span>
+63:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="time-method" class="method-detail ">
+				<a name="method-i-time"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">time</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+The current ebay time as calculated by an offset from localtime.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="time-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/beway/ebay_data.rb, line 24</span>
+24:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">time</span>
+25:       <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">localtime</span> <span class="ruby-operator">+</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">time_offset</span>
+26:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="time-offset-method" class="method-detail ">
+				<a name="method-i-time_offset"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">time_offset</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+The localtime offset from ebay time.
+</p>
+<p>
+add this offset to localtime to get an estimated ebay time
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="time-offset-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/beway/ebay_data.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">time_offset</span>
+32:       <span class="ruby-identifier">calc_time_offset</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@time_offset</span>
+33:       <span class="ruby-ivar">@time_offset</span>
+34:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

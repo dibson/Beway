@@ -2,4 +2,4 @@
 .*.swo
 *~
 spec/config.rb
-doc/*
+.rvmrc

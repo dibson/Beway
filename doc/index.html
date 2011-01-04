@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>RDoc Documentation</title>
+
+	<link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
+
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body class="indexpage">
+
+	
+	<h1>RDoc Documentation</h1>
+
+	
+	<div id="main">
+		<h2>BEWAY - an ebay sniping tool</h2>
+<p>
+<a href="Beway.html">Beway</a> is a small Ruby library that:
+</p>
+<ul>
+<li><p>
+Retrieves information about an ebay auction
+</p>
+</li>
+<li><p>
+Bids on an ebay auction
+</p>
+</li>
+<li><p>
+Retrieves official ebay time
+</p>
+</li>
+<li><p>
+Offers a simple user interface for bidding on an auction
+</p>
+</li>
+</ul>
+<h2>Requirements</h2>
+<p>
+Perhaps not requirements, but developed and tested with the following:
+</p>
+<ul>
+<li><p>
+Ruby 1.9.2
+</p>
+</li>
+</ul>
+<p>
+And these gems:
+</p>
+<ul>
+<li><p>
+mechanize (1.0.0)
+</p>
+</li>
+<li><p>
+nokogiri (1.4.4)
+</p>
+</li>
+<li><p>
+rspec (2.4.0)
+</p>
+</li>
+</ul>
+<h2>Installation</h2>
+<p>
+Install your gems:
+</p>
+<pre>
+  gem install mechanize rspec nokogiri
+</pre>
+<p>
+Run the CLI interface
+</p>
+<pre>
+  ruby bin/cli.rb
+</pre>
+<h2>Tests</h2>
+<p>
+Make sure everything works as expected:
+</p>
+<pre>
+  rake spec
+</pre>
+<h2>Docs</h2>
+<p>
+Generate rdoc html:
+</p>
+<pre>
+  rake rdoc</pre>
+
+	</div>
+	
+
+	
+	
+	<h2>Files</h2>
+	<ul>
+		
+			<li class="file"><a href="README.html">README</a></li>
+		
+	</ul>
+	
+
+	<h2 id="classes">Classes/Modules</h2>
+	<ul>
+		
+		<li class="module"><a href="Beway.html">Beway</a></li>
+		
+		<li class="class"><a href="Beway/Auction.html">Beway::Auction</a></li>
+		
+		<li class="class"><a href="Beway/AuctionParseError.html">Beway::AuctionParseError</a></li>
+		
+		<li class="class"><a href="Beway/Bidder.html">Beway::Bidder</a></li>
+		
+		<li class="class"><a href="Beway/BidderError.html">Beway::BidderError</a></li>
+		
+		<li class="class"><a href="Beway/CliRunner.html">Beway::CliRunner</a></li>
+		
+		<li class="class"><a href="Beway/EbayData.html">Beway::EbayData</a></li>
+		
+		<li class="class"><a href="Beway/EbayDataParseError.html">Beway::EbayDataParseError</a></li>
+		
+		<li class="class"><a href="Beway/InvalidUrlError.html">Beway::InvalidUrlError</a></li>
+		
+	</ul>
+
+	<h2 id="methods">Methods</h2>
+	<ul>
+		
+			<li><a href="Beway/EbayData.html#method-c-new">::new &mdash; Beway::EbayData</a></li>
+		
+			<li><a href="Beway/Bidder.html#method-c-new">::new &mdash; Beway::Bidder</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-c-new">::new &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/Auction.html#method-c-new">::new &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-c-start">::start &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-auction_from_user">#auction_from_user &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-auction_number">#auction_number &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/Bidder.html#method-i-bid">#bid &mdash; Beway::Bidder</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-bid_for_auction_from_user">#bid_for_auction_from_user &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/EbayData.html#method-i-calc_time_offset">#calc_time_offset &mdash; Beway::EbayData</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-complete%3F">#complete? &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-current_bid">#current_bid &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-description">#description &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-display_auction">#display_auction &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-display_intro">#display_intro &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-end_time">#end_time &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-get_user_input">#get_user_input &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/Bidder.html#method-i-handle_login_page">#handle_login_page &mdash; Beway::Bidder</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-has_bid_button%3F">#has_bid_button? &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/Bidder.html#method-i-is_login_page%3F">#is_login_page? &mdash; Beway::Bidder</a></li>
+		
+			<li><a href="Beway/Bidder.html#method-i-login">#login &mdash; Beway::Bidder</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-min_bid">#min_bid &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-node_text">#node_text &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/EbayData.html#method-i-official_time">#official_time &mdash; Beway::EbayData</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-prompt_bid">#prompt_bid &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-prompt_confirm_auction">#prompt_confirm_auction &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-prompt_confirm_bid">#prompt_confirm_bid &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-prompt_password">#prompt_password &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-prompt_url">#prompt_url &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-prompt_username">#prompt_username &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-refresh_doc">#refresh_doc &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/CliRunner.html#method-i-run">#run &mdash; Beway::CliRunner</a></li>
+		
+			<li><a href="Beway/EbayData.html#method-i-seconds_to">#seconds_to &mdash; Beway::EbayData</a></li>
+		
+			<li><a href="Beway/EbayData.html#method-i-time">#time &mdash; Beway::EbayData</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-time_left">#time_left &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-time_node">#time_node &mdash; Beway::Auction</a></li>
+		
+			<li><a href="Beway/EbayData.html#method-i-time_offset">#time_offset &mdash; Beway::EbayData</a></li>
+		
+			<li><a href="Beway/Auction.html#method-i-valid_auction%3F">#valid_auction? &mdash; Beway::Auction</a></li>
+		
+	</ul>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
