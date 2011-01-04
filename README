@@ -28,7 +28,7 @@ Install your gems:
 
 Run the CLI interface
 
-  ruby bin/cli.rb
+  ruby bin/beway
 
 == Tests
 
