@@ -1,4 +1,7 @@
 require "rake/rdoctask"
+require "rspec/core/rake_task"
+
+RSpec::Core::RakeTask.new(:spec)
 
 Rake::RDocTask.new do |rd|
   rd.main = "README"
