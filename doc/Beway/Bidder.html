@@ -333,30 +333,36 @@ bid amount on given auction
 <pre>
     <span class="ruby-comment cmt"># File lib/beway/bidder.rb, line 42</span>
 42:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bid</span>(<span class="ruby-identifier">auction_url</span>, <span class="ruby-identifier">amount</span>)
-43:       <span class="ruby-identifier">login</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@logged_in</span>
-44: 
+43: 
+44:       <span class="ruby-comment cmt"># get auction</span>
 45:       <span class="ruby-identifier">auction_page</span> = <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">auction_url</span>)
 46: 
-47:       <span class="ruby-identifier">forms</span> = <span class="ruby-identifier">auction_page</span>.<span class="ruby-identifier">forms_with</span>( <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-regexp re">/http:\/\/offer\.ebay\.com\//</span> )
-48:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">BidderError</span>, <span class="ruby-value str">&quot;Couldn't find auction bid form&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">forms</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">!=</span> <span class="ruby-value">1</span>
-49:       <span class="ruby-identifier">bid_form</span> = <span class="ruby-identifier">forms</span>[<span class="ruby-value">0</span>]
-50: 
-51:       <span class="ruby-identifier">bid_form</span>.<span class="ruby-identifier">maxbid</span> = <span class="ruby-identifier">amount</span>
-52:       <span class="ruby-identifier">bid_response</span> = <span class="ruby-identifier">bid_form</span>.<span class="ruby-identifier">submit</span>
-53: 
-54:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">is_login_page?</span>(<span class="ruby-identifier">bid_response</span>)
-55:         <span class="ruby-identifier">bid_response</span> = <span class="ruby-identifier">handle_login_page</span>(<span class="ruby-identifier">bid_response</span>) 
-56:       <span class="ruby-keyword kw">end</span>
-57: 
-58:       <span class="ruby-identifier">forms</span> = <span class="ruby-identifier">bid_response</span>.<span class="ruby-identifier">forms_with</span>( <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'http://offer.ebay.com/ws/eBayISAPI.dll'</span> )
-59:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">BidderError</span>, <span class="ruby-value str">&quot;Couldn't find confirm bid form&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">forms</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">!=</span> <span class="ruby-value">1</span>
-60:       <span class="ruby-identifier">confirm_form</span> = <span class="ruby-identifier">forms</span>[<span class="ruby-value">0</span>]
-61:       <span class="ruby-identifier">confirm_button</span> = <span class="ruby-identifier">confirm_form</span>.<span class="ruby-identifier">button_with</span>( <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Confirm Bid'</span> )
-62:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">BidderError</span>, <span class="ruby-value str">&quot;Couldn't find confirm button&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">confirm_button</span>
-63: 
-64:       <span class="ruby-identifier">confirm_response</span> = <span class="ruby-identifier">confirm_form</span>.<span class="ruby-identifier">submit</span>( <span class="ruby-identifier">confirm_button</span> )
-65:       <span class="ruby-identifier">confirm_response</span>
-66:     <span class="ruby-keyword kw">end</span></pre>
+47:       <span class="ruby-comment cmt"># get the bid form</span>
+48:       <span class="ruby-identifier">forms</span> = <span class="ruby-identifier">auction_page</span>.<span class="ruby-identifier">forms_with</span>( <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-regexp re">/http:\/\/offer\.ebay\.com\//</span> )
+49:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">BidderError</span>, <span class="ruby-value str">&quot;Couldn't find auction bid form&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">forms</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">!=</span> <span class="ruby-value">1</span>
+50:       <span class="ruby-identifier">bid_form</span> = <span class="ruby-identifier">forms</span>[<span class="ruby-value">0</span>]
+51: 
+52:       <span class="ruby-comment cmt"># fill in, submit bid form</span>
+53:       <span class="ruby-identifier">bid_form</span>.<span class="ruby-identifier">maxbid</span> = <span class="ruby-identifier">amount</span>
+54:       <span class="ruby-identifier">bid_response</span> = <span class="ruby-identifier">bid_form</span>.<span class="ruby-identifier">submit</span>
+55: 
+56:       <span class="ruby-comment cmt"># if given a login page, do it and get redirected to confirm bid</span>
+57:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">is_login_page?</span>(<span class="ruby-identifier">bid_response</span>)
+58:         <span class="ruby-identifier">bid_response</span> = <span class="ruby-identifier">handle_login_page</span>(<span class="ruby-identifier">bid_response</span>) 
+59:       <span class="ruby-keyword kw">end</span>
+60: 
+61:       <span class="ruby-comment cmt"># get confirm bid form</span>
+62:       <span class="ruby-identifier">forms</span> = <span class="ruby-identifier">bid_response</span>.<span class="ruby-identifier">forms_with</span>( <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'http://offer.ebay.com/ws/eBayISAPI.dll'</span> )
+63:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">BidderError</span>, <span class="ruby-value str">&quot;Couldn't find confirm bid form&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">forms</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">!=</span> <span class="ruby-value">1</span>
+64:       <span class="ruby-identifier">confirm_form</span> = <span class="ruby-identifier">forms</span>[<span class="ruby-value">0</span>]
+65: 
+66:       <span class="ruby-comment cmt"># click confirm button</span>
+67:       <span class="ruby-identifier">confirm_button</span> = <span class="ruby-identifier">confirm_form</span>.<span class="ruby-identifier">button_with</span>( <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Confirm Bid'</span> )
+68:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">BidderError</span>, <span class="ruby-value str">&quot;Couldn't find confirm bid button&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">confirm_button</span>
+69:       <span class="ruby-identifier">confirm_response</span> = <span class="ruby-identifier">confirm_form</span>.<span class="ruby-identifier">submit</span>( <span class="ruby-identifier">confirm_button</span> )
+70: 
+71:       <span class="ruby-identifier">confirm_response</span>
+72:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -439,19 +445,19 @@ log into ebay as prompted by login_page
 					<div class="method-source-code"
 						id="handle-login-page-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/beway/bidder.rb, line 80</span>
-80:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">handle_login_page</span>(<span class="ruby-identifier">login_page</span>)
-81:       <span class="ruby-identifier">login_form</span> = <span class="ruby-identifier">login_page</span>.<span class="ruby-identifier">form_with</span>( <span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'SignInForm'</span>)
-82:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">BidderError</span>, <span class="ruby-value str">&quot;Couldn't find login form&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">login_form</span>
-83:       <span class="ruby-identifier">login_form</span>.<span class="ruby-identifier">userid</span> = <span class="ruby-ivar">@username</span>
-84:       <span class="ruby-identifier">login_form</span>.<span class="ruby-identifier">pass</span> = <span class="ruby-ivar">@password</span>
-85:       <span class="ruby-identifier">login_response</span> =  <span class="ruby-identifier">login_form</span>.<span class="ruby-identifier">submit</span>
-86: 
-87:       <span class="ruby-ivar">@logged_in</span> = <span class="ruby-identifier">login_response</span>.<span class="ruby-identifier">search</span>(<span class="ruby-value str">'form#SignInForm'</span>).<span class="ruby-identifier">empty?</span>
-88:       <span class="ruby-ivar">@last_login_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@logged_in</span>
-89: 
-90:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">login_response</span>
-91:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/beway/bidder.rb, line 86</span>
+86:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">handle_login_page</span>(<span class="ruby-identifier">login_page</span>)
+87:       <span class="ruby-identifier">login_form</span> = <span class="ruby-identifier">login_page</span>.<span class="ruby-identifier">form_with</span>( <span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'SignInForm'</span>)
+88:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">BidderError</span>, <span class="ruby-value str">&quot;Couldn't find login form&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">login_form</span>
+89:       <span class="ruby-identifier">login_form</span>.<span class="ruby-identifier">userid</span> = <span class="ruby-ivar">@username</span>
+90:       <span class="ruby-identifier">login_form</span>.<span class="ruby-identifier">pass</span> = <span class="ruby-ivar">@password</span>
+91:       <span class="ruby-identifier">login_response</span> =  <span class="ruby-identifier">login_form</span>.<span class="ruby-identifier">submit</span>
+92: 
+93:       <span class="ruby-ivar">@logged_in</span> = <span class="ruby-identifier">login_response</span>.<span class="ruby-identifier">search</span>(<span class="ruby-value str">'form#SignInForm'</span>).<span class="ruby-identifier">empty?</span>
+94:       <span class="ruby-ivar">@last_login_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@logged_in</span>
+95: 
+96:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">login_response</span>
+97:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -484,14 +490,14 @@ is page a login page?
 					<div class="method-source-code"
 						id="is-login-page--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/beway/bidder.rb, line 71</span>
-71:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">is_login_page?</span>(<span class="ruby-identifier">page</span>)
-72:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">form_with</span>( <span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'SignInForm'</span>)
-73:         <span class="ruby-keyword kw">true</span>
-74:       <span class="ruby-keyword kw">else</span>
-75:         <span class="ruby-keyword kw">false</span>
-76:       <span class="ruby-keyword kw">end</span>
-77:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/beway/bidder.rb, line 77</span>
+77:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">is_login_page?</span>(<span class="ruby-identifier">page</span>)
+78:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">form_with</span>( <span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'SignInForm'</span>)
+79:         <span class="ruby-keyword kw">true</span>
+80:       <span class="ruby-keyword kw">else</span>
+81:         <span class="ruby-keyword kw">false</span>
+82:       <span class="ruby-keyword kw">end</span>
+83:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
