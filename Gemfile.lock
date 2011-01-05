@@ -1,0 +1,34 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    diff-lcs (1.1.2)
+    jruby-jars (1.5.6)
+    jruby-rack (1.0.4)
+    mechanize (1.0.0)
+      nokogiri (>= 1.2.1)
+    nokogiri (1.4.4)
+    rake (0.8.7)
+    rspec (2.4.0)
+      rspec-core (~> 2.4.0)
+      rspec-expectations (~> 2.4.0)
+      rspec-mocks (~> 2.4.0)
+    rspec-core (2.4.0)
+    rspec-expectations (2.4.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.4.0)
+    rubyzip (0.9.4)
+    warbler (1.2.1)
+      jruby-jars (>= 1.4.0)
+      jruby-rack (>= 1.0.0)
+      rake (>= 0.8.7)
+      rubyzip (>= 0.9.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mechanize (>= 1.0.0)
+  nokogiri (>= 1.4.4)
+  rake
+  rspec (>= 2.4.0)
+  warbler (>= 1.2.1)
