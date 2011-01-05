@@ -63,6 +63,7 @@ module Beway
             puts "  " + e.message
             puts 
             puts "So sorry!"
+            exit
           end
         end
 
