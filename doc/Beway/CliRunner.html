@@ -291,25 +291,25 @@ auction
 					<div class="method-source-code"
 						id="auction-from-user-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 87</span>
- 87:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">auction_from_user</span>
- 88:       <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
- 89:         <span class="ruby-keyword kw">begin</span>
- 90:           <span class="ruby-identifier">auction</span> = <span class="ruby-constant">Auction</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">prompt_url</span>)
- 91:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">auction</span>.<span class="ruby-identifier">complete?</span>
- 92:             <span class="ruby-identifier">display_auction</span> <span class="ruby-identifier">auction</span>
- 93:             <span class="ruby-identifier">puts</span>
- 94:             <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;That auction is done already!  Try another, or 'exit' to quit.&quot;</span>
- 95:             <span class="ruby-keyword kw">next</span>
- 96:           <span class="ruby-keyword kw">end</span>
- 97:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">AuctionParseError</span>
- 98:           <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Sorry, we can't parse that url as an auction&quot;</span>
- 99:           <span class="ruby-keyword kw">next</span>
-100:         <span class="ruby-keyword kw">end</span>
-101: 
-102:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">auction</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prompt_confirm_auction</span>(<span class="ruby-identifier">auction</span>)
-103:       <span class="ruby-keyword kw">end</span>
-104:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 88</span>
+ 88:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">auction_from_user</span>
+ 89:       <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
+ 90:         <span class="ruby-keyword kw">begin</span>
+ 91:           <span class="ruby-identifier">auction</span> = <span class="ruby-constant">Auction</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">prompt_url</span>)
+ 92:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">auction</span>.<span class="ruby-identifier">complete?</span>
+ 93:             <span class="ruby-identifier">display_auction</span> <span class="ruby-identifier">auction</span>
+ 94:             <span class="ruby-identifier">puts</span>
+ 95:             <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;That auction is done already!  Try another, or 'exit' to quit.&quot;</span>
+ 96:             <span class="ruby-keyword kw">next</span>
+ 97:           <span class="ruby-keyword kw">end</span>
+ 98:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">AuctionParseError</span>
+ 99:           <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Sorry, we can't parse that url as an auction&quot;</span>
+100:           <span class="ruby-keyword kw">next</span>
+101:         <span class="ruby-keyword kw">end</span>
+102: 
+103:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">auction</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prompt_confirm_auction</span>(<span class="ruby-identifier">auction</span>)
+104:       <span class="ruby-keyword kw">end</span>
+105:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -340,13 +340,13 @@ auction
 					<div class="method-source-code"
 						id="bid-for-auction-from-user-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 80</span>
-80:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bid_for_auction_from_user</span>(<span class="ruby-identifier">a</span>)
-81:       <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
-82:         <span class="ruby-identifier">bid_amount</span> = <span class="ruby-identifier">prompt_bid</span>()<span class="ruby-comment cmt">#a.min_bid)</span>
-83:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">bid_amount</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prompt_confirm_bid</span>(<span class="ruby-identifier">bid_amount</span>)
-84:       <span class="ruby-keyword kw">end</span>
-85:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 81</span>
+81:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bid_for_auction_from_user</span>(<span class="ruby-identifier">a</span>)
+82:       <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
+83:         <span class="ruby-identifier">bid_amount</span> = <span class="ruby-identifier">prompt_bid</span>()<span class="ruby-comment cmt">#a.min_bid)</span>
+84:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">bid_amount</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prompt_confirm_bid</span>(<span class="ruby-identifier">bid_amount</span>)
+85:       <span class="ruby-keyword kw">end</span>
+86:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -377,17 +377,17 @@ auction
 					<div class="method-source-code"
 						id="display-auction-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 110</span>
-110:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">display_auction</span>(<span class="ruby-identifier">a</span>)
-111:       <span class="ruby-identifier">puts</span>
-112:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;URL:            #{a.url}&quot;</span>
-113:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Description:    #{a.description}&quot;</span>
-114:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Auction Number: #{a.auction_number}&quot;</span>
-115:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Current Bid:    #{a.current_bid}&quot;</span>
-116:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Min Bid:        #{a.min_bid || '-- bidding closed --'}&quot;</span>
-117:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Time Left:      #{a.time_left || '-- bidding closed --'}&quot;</span>
-118:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;End Time:       #{a.end_time}&quot;</span>
-119:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 111</span>
+111:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">display_auction</span>(<span class="ruby-identifier">a</span>)
+112:       <span class="ruby-identifier">puts</span>
+113:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;URL:            #{a.url}&quot;</span>
+114:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Description:    #{a.description}&quot;</span>
+115:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Auction Number: #{a.auction_number}&quot;</span>
+116:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Current Bid:    #{a.current_bid}&quot;</span>
+117:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Min Bid:        #{a.min_bid || '-- bidding closed --'}&quot;</span>
+118:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Time Left:      #{a.time_left || '-- bidding closed --'}&quot;</span>
+119:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;End Time:       #{a.end_time}&quot;</span>
+120:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -418,10 +418,10 @@ auction
 					<div class="method-source-code"
 						id="display-intro-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 106</span>
-106:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">display_intro</span>
-107:       <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Welcome to Beway's CLI interface&quot;</span>
-108:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 107</span>
+107:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">display_intro</span>
+108:       <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Welcome to Beway's CLI interface&quot;</span>
+109:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -452,12 +452,12 @@ auction
 					<div class="method-source-code"
 						id="get-user-input-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 176</span>
-176:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_user_input</span>
-177:       <span class="ruby-identifier">s</span> = <span class="ruby-identifier">gets</span>
-178:       <span class="ruby-identifier">exit</span> <span class="ruby-keyword kw">if</span> <span class="ruby-value str">'exit'</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">downcase</span>
-179:       <span class="ruby-identifier">s</span>
-180:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 177</span>
+177:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_user_input</span>
+178:       <span class="ruby-identifier">s</span> = <span class="ruby-identifier">gets</span>
+179:       <span class="ruby-identifier">exit</span> <span class="ruby-keyword kw">if</span> <span class="ruby-value str">'exit'</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">downcase</span>
+180:       <span class="ruby-identifier">s</span>
+181:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -488,15 +488,15 @@ auction
 					<div class="method-source-code"
 						id="prompt-bid-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 136</span>
-136:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_bid</span>(<span class="ruby-identifier">min</span>=<span class="ruby-keyword kw">nil</span>)
-137:       <span class="ruby-identifier">print</span> <span class="ruby-value str">&quot;Enter your bid for the item &gt;&gt; &quot;</span>
-138:       <span class="ruby-identifier">bid</span> = <span class="ruby-identifier">get_user_input</span>.<span class="ruby-identifier">to_f</span>
-139:       <span class="ruby-identifier">puts</span>
-140:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">bid</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">min</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">bid</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">min</span>
-141:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;The minimum bid for this auction is #{min}.  Try again, or type 'exit' to quit.&quot;</span>
-142:       <span class="ruby-identifier">prompt_bid</span>(<span class="ruby-identifier">min</span>)
-143:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 137</span>
+137:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_bid</span>(<span class="ruby-identifier">min</span>=<span class="ruby-keyword kw">nil</span>)
+138:       <span class="ruby-identifier">print</span> <span class="ruby-value str">&quot;Enter your bid for the item &gt;&gt; &quot;</span>
+139:       <span class="ruby-identifier">bid</span> = <span class="ruby-identifier">get_user_input</span>.<span class="ruby-identifier">to_f</span>
+140:       <span class="ruby-identifier">puts</span>
+141:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">bid</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">min</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">bid</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">min</span>
+142:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;The minimum bid for this auction is #{min}.  Try again, or type 'exit' to quit.&quot;</span>
+143:       <span class="ruby-identifier">prompt_bid</span>(<span class="ruby-identifier">min</span>)
+144:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -527,17 +527,17 @@ auction
 					<div class="method-source-code"
 						id="prompt-confirm-auction-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 156</span>
-156:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_confirm_auction</span>(<span class="ruby-identifier">a</span>)
-157:       <span class="ruby-identifier">display_auction</span>(<span class="ruby-identifier">a</span>)
-158:       <span class="ruby-identifier">print</span> <span class="ruby-value str">'Does this look like your auction? (y\n) &gt;&gt; '</span>
-159:       <span class="ruby-identifier">confirm</span> = <span class="ruby-identifier">get_user_input</span>
-160:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">confirm</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">chr</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'y'</span>
-161:         <span class="ruby-keyword kw">true</span>
-162:       <span class="ruby-keyword kw">else</span>
-163:         <span class="ruby-keyword kw">false</span>
-164:       <span class="ruby-keyword kw">end</span>
-165:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 157</span>
+157:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_confirm_auction</span>(<span class="ruby-identifier">a</span>)
+158:       <span class="ruby-identifier">display_auction</span>(<span class="ruby-identifier">a</span>)
+159:       <span class="ruby-identifier">print</span> <span class="ruby-value str">'Does this look like your auction? (y\n) &gt;&gt; '</span>
+160:       <span class="ruby-identifier">confirm</span> = <span class="ruby-identifier">get_user_input</span>
+161:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">confirm</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">chr</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'y'</span>
+162:         <span class="ruby-keyword kw">true</span>
+163:       <span class="ruby-keyword kw">else</span>
+164:         <span class="ruby-keyword kw">false</span>
+165:       <span class="ruby-keyword kw">end</span>
+166:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -568,17 +568,17 @@ auction
 					<div class="method-source-code"
 						id="prompt-confirm-bid-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 145</span>
-145:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_confirm_bid</span>(<span class="ruby-identifier">amount</span>)
-146:       <span class="ruby-identifier">printf</span> <span class="ruby-value str">&quot;Are you sure you want to bid %.2f? (y\\n) &gt;&gt; &quot;</span>, <span class="ruby-identifier">amount</span>
-147:       <span class="ruby-identifier">confirm</span> = <span class="ruby-identifier">get_user_input</span>
-148:       <span class="ruby-identifier">puts</span>
-149:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">confirm</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">chr</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'y'</span>
-150:         <span class="ruby-keyword kw">true</span>
-151:       <span class="ruby-keyword kw">else</span>
-152:         <span class="ruby-keyword kw">false</span>
-153:       <span class="ruby-keyword kw">end</span>
-154:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 146</span>
+146:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_confirm_bid</span>(<span class="ruby-identifier">amount</span>)
+147:       <span class="ruby-identifier">printf</span> <span class="ruby-value str">&quot;Are you sure you want to bid %.2f? (y\\n) &gt;&gt; &quot;</span>, <span class="ruby-identifier">amount</span>
+148:       <span class="ruby-identifier">confirm</span> = <span class="ruby-identifier">get_user_input</span>
+149:       <span class="ruby-identifier">puts</span>
+150:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">confirm</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">chr</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'y'</span>
+151:         <span class="ruby-keyword kw">true</span>
+152:       <span class="ruby-keyword kw">else</span>
+153:         <span class="ruby-keyword kw">false</span>
+154:       <span class="ruby-keyword kw">end</span>
+155:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -609,16 +609,16 @@ auction
 					<div class="method-source-code"
 						id="prompt-password-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 126</span>
-126:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_password</span>
-127:       <span class="ruby-identifier">print</span> <span class="ruby-value str">&quot;Enter eBay password &gt;&gt; &quot;</span>
-128:       <span class="ruby-identifier">system</span> <span class="ruby-value str">&quot;stty -echo&quot;</span>
-129:       <span class="ruby-identifier">pass</span> = <span class="ruby-identifier">get_user_input</span>
-130:       <span class="ruby-identifier">system</span> <span class="ruby-value str">&quot;stty echo&quot;</span>
-131:       <span class="ruby-identifier">puts</span>
-132: 
-133:       <span class="ruby-identifier">pass</span>.<span class="ruby-identifier">chomp</span>
-134:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 127</span>
+127:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_password</span>
+128:       <span class="ruby-identifier">print</span> <span class="ruby-value str">&quot;Enter eBay password &gt;&gt; &quot;</span>
+129:       <span class="ruby-identifier">system</span> <span class="ruby-value str">&quot;stty -echo&quot;</span>
+130:       <span class="ruby-identifier">pass</span> = <span class="ruby-identifier">get_user_input</span>
+131:       <span class="ruby-identifier">system</span> <span class="ruby-value str">&quot;stty echo&quot;</span>
+132:       <span class="ruby-identifier">puts</span>
+133: 
+134:       <span class="ruby-identifier">pass</span>.<span class="ruby-identifier">chomp</span>
+135:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -649,15 +649,15 @@ auction
 					<div class="method-source-code"
 						id="prompt-url-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 167</span>
-167:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_url</span>
-168:       <span class="ruby-identifier">puts</span>
-169:       <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Enter an ebay auction url (or 'exit' to exit): &quot;</span>
-170:       <span class="ruby-identifier">print</span> <span class="ruby-value str">&quot;\n&gt;&gt; &quot;</span>
-171:       <span class="ruby-identifier">url</span> = <span class="ruby-identifier">get_user_input</span>
-172: 
-173:       <span class="ruby-identifier">url</span>.<span class="ruby-identifier">chomp</span>
-174:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 168</span>
+168:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_url</span>
+169:       <span class="ruby-identifier">puts</span>
+170:       <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Enter an ebay auction url (or 'exit' to exit): &quot;</span>
+171:       <span class="ruby-identifier">print</span> <span class="ruby-value str">&quot;\n&gt;&gt; &quot;</span>
+172:       <span class="ruby-identifier">url</span> = <span class="ruby-identifier">get_user_input</span>
+173: 
+174:       <span class="ruby-identifier">url</span>.<span class="ruby-identifier">chomp</span>
+175:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -688,11 +688,11 @@ auction
 					<div class="method-source-code"
 						id="prompt-username-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 121</span>
-121:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_username</span>
-122:       <span class="ruby-identifier">print</span> <span class="ruby-value str">&quot;Enter eBay username &gt;&gt; &quot;</span>
-123:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">get_user_input</span>.<span class="ruby-identifier">chomp</span>
-124:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/beway/cli_runner.rb, line 122</span>
+122:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_username</span>
+123:       <span class="ruby-identifier">print</span> <span class="ruby-value str">&quot;Enter eBay username &gt;&gt; &quot;</span>
+124:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">get_user_input</span>.<span class="ruby-identifier">chomp</span>
+125:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -770,19 +770,20 @@ auction
 63:             <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;  &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
 64:             <span class="ruby-identifier">puts</span> 
 65:             <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;So sorry!&quot;</span>
-66:           <span class="ruby-keyword kw">end</span>
-67:         <span class="ruby-keyword kw">end</span>
-68: 
-69:         <span class="ruby-identifier">seconds</span> = <span class="ruby-identifier">seconds_to_end</span>.<span class="ruby-identifier">floor</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>
-70:         <span class="ruby-identifier">seconds</span> = <span class="ruby-value">5</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">seconds_to_end</span> <span class="ruby-operator">&lt;</span> (<span class="ruby-value">2</span> * <span class="ruby-constant">BID_THRESHOLD</span>)
-71:         <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Sleeping #{seconds} seconds...&quot;</span>
-72:         <span class="ruby-identifier">sleep</span> <span class="ruby-identifier">seconds</span>
-73: 
-74:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Updating auction...&quot;</span>
-75:         <span class="ruby-identifier">puts</span>
-76:         <span class="ruby-identifier">auction</span>.<span class="ruby-identifier">refresh_doc</span>
-77:       <span class="ruby-keyword kw">end</span>
-78:     <span class="ruby-keyword kw">end</span></pre>
+66:             <span class="ruby-identifier">exit</span>
+67:           <span class="ruby-keyword kw">end</span>
+68:         <span class="ruby-keyword kw">end</span>
+69: 
+70:         <span class="ruby-identifier">seconds</span> = <span class="ruby-identifier">seconds_to_end</span>.<span class="ruby-identifier">floor</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>
+71:         <span class="ruby-identifier">seconds</span> = <span class="ruby-value">5</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">seconds_to_end</span> <span class="ruby-operator">&lt;</span> (<span class="ruby-value">2</span> * <span class="ruby-constant">BID_THRESHOLD</span>)
+72:         <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Sleeping #{seconds} seconds...&quot;</span>
+73:         <span class="ruby-identifier">sleep</span> <span class="ruby-identifier">seconds</span>
+74: 
+75:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Updating auction...&quot;</span>
+76:         <span class="ruby-identifier">puts</span>
+77:         <span class="ruby-identifier">auction</span>.<span class="ruby-identifier">refresh_doc</span>
+78:       <span class="ruby-keyword kw">end</span>
+79:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
