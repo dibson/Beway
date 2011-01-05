@@ -1,0 +1,43 @@
+== BEWAY - an ebay sniping tool
+
+Beway is a small Ruby library that:
+
+- Retrieves information about an ebay auction
+- Bids on an ebay auction
+- Retrieves official ebay time
+- Offers a simple user interface for bidding on an auction
+
+== Requirements
+
+Perhaps not requirements, but developed and tested with the
+following:
+
+- Ruby 1.9.2
+
+And these gems:
+
+- mechanize (1.0.0)
+- nokogiri (1.4.4)
+- rspec (2.4.0)
+
+== Installation
+
+Install your gems:
+
+  gem install mechanize rspec nokogiri
+
+Run the CLI interface
+
+  ruby bin/beway
+
+== Tests
+
+Make sure everything works as expected:
+
+  rake spec
+
+== Docs
+
+Generate rdoc html:
+
+  rake rdoc
