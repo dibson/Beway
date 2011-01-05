@@ -7,6 +7,15 @@ AUCTIONS_BIN = []
 AUCTIONS_COMPLETE = []
 
 AUCTIONS_VALID << {
+  :url => HTML_DIR + 'off-white-sweater.html',
+  :description => 'J CREW Hooded Sweater Off-White Cable Knit w Cashmere S',
+  :current_bid => 'US $14.99',
+  :min_bid => 14.99,
+  :time_left => '2d 05h',
+  :end_time => 'Jan 07, 2011 15:00:44 PST',
+  :auction_number => '250749861707'
+}
+AUCTIONS_VALID << {
   :url => HTML_DIR + 'pink-sweater-bid-bin.html',
   :description => 'ALFANI  MENS SWEATER PINK SMALL  NEW WITH TAGS',
   :current_bid => 'US $14.99',
