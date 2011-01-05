@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency('rspec')
 
   s.files = Dir[ 'bin/*' ] + Dir[ 'doc/**/*' ] + Dir[ 'lib/**/*.rb' ] + Dir[ '[A-Z]*' ] + Dir[ 'spec/**/*' ]
+  s.require_paths = [ 'lib' ]
   s.executables = [ 'beway' ]
+  s.default_executable = [ 'beway' ]
   s.has_rdoc = true
 end
