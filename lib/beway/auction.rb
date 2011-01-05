@@ -76,10 +76,23 @@ module Beway
       time_str = node_text(time_node)
       time_str = time_str[/^[^(]*/].strip
       time_ar = time_str.split
-      raise AuctionParseError, "Didn't find hour marker where expected" unless time_ar[1] == 'h'
-      raise AuctionParseError, "Didn't find minute marker where expected" unless time_ar[3] == 'm'
-      raise AuctionParseError, "Didn't find second marker where expected" unless time_ar[5] == 's'
-      time_ar[0] + 'h ' + time_ar[2] + 'm ' + time_ar[4] + 's'
+
+      # time_ar comes to us looking like
+      #   ["2d", "05h"] or ["0", "h", "12", "m", "5", "s"]
+      # decide which, and roll with it...
+      
+      if time_ar[0][/^\d+d$/] and time_ar[1][/^\d+h$/]
+        # ["2d", "05h"] style
+        return time_ar.join(' ')
+      else
+        # assume ["0", "h", "12", "m", "5", "s"] style
+        raise AuctionParseError, "Didn't find hour marker where expected" unless time_ar[1] == 'h'
+        raise AuctionParseError, "Didn't find minute marker where expected" unless time_ar[3] == 'm'
+        raise AuctionParseError, "Didn't find second marker where expected" unless time_ar[5] == 's'
+        return [ time_ar[0] + time_ar[1],
+                 time_ar[2] + time_ar[3],
+                 time_ar[4] + time_ar[5] ].join(' ')
+      end
     end
 
     # parsing method, returns a float
