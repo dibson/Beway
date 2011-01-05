@@ -48,13 +48,22 @@ module Beway
 
         if seconds_to_end <= BID_THRESHOLD
           puts "Placing bid..."
-          bidder.bid(auction.url, bid_amount)
-          puts "           ...placed."
-          puts "Sleeping til end of auction..."
-          sleep ebay.seconds_to(auction.end_time).ceil
-          auction.refresh_doc
-          display_auction auction
-          exit
+          begin
+            bidder.bid(auction.url, bid_amount)
+            puts "           ...placed."
+            puts "Sleeping til end of auction..."
+            sleep ebay.seconds_to(auction.end_time).ceil
+            auction.refresh_doc
+            display_auction auction
+            exit
+          rescue BidderError => e
+            puts "           ...oh no!"
+            puts "There was an error placing your bid:"
+            puts
+            puts "  " + e.message
+            puts 
+            puts "So sorry!"
+          end
         end
 
         seconds = seconds_to_end.floor / 2

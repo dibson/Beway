@@ -40,28 +40,34 @@ module Beway
 
     # bid amount on given auction
     def bid(auction_url, amount)
-      login unless @logged_in
 
+      # get auction
       auction_page = @agent.get(auction_url)
 
+      # get the bid form
       forms = auction_page.forms_with( :action => /http:\/\/offer\.ebay\.com\// )
       raise BidderError, "Couldn't find auction bid form" if forms.length != 1
       bid_form = forms[0]
 
+      # fill in, submit bid form
       bid_form.maxbid = amount
       bid_response = bid_form.submit
 
+      # if given a login page, do it and get redirected to confirm bid
       if is_login_page?(bid_response)
         bid_response = handle_login_page(bid_response) 
       end
 
+      # get confirm bid form
       forms = bid_response.forms_with( :action => 'http://offer.ebay.com/ws/eBayISAPI.dll' )
       raise BidderError, "Couldn't find confirm bid form" if forms.length != 1
       confirm_form = forms[0]
-      confirm_button = confirm_form.button_with( :value => 'Confirm Bid' )
-      raise BidderError, "Couldn't find confirm button" unless confirm_button
 
+      # click confirm button
+      confirm_button = confirm_form.button_with( :value => 'Confirm Bid' )
+      raise BidderError, "Couldn't find confirm bid button" unless confirm_button
       confirm_response = confirm_form.submit( confirm_button )
+
       confirm_response
     end
 
