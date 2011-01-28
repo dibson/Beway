@@ -95,6 +95,9 @@ module Beway
             puts "That auction is done already!  Try another, or 'exit' to quit."
             next
           end
+        rescue InvalidUrlError
+          puts "Sorry, we can't snipe that url."
+          next
         rescue AuctionParseError
           puts "Sorry, we can't parse that url as an auction"
           next
