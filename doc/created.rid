@@ -1,6 +1,6 @@
-Wed, 05 Jan 2011 10:20:59 -0800
+Thu, 27 Jan 2011 19:25:48 -0800
 README	Tue, 04 Jan 2011 18:26:07 -0800
 lib/beway/ebay_data.rb	Mon, 27 Dec 2010 00:14:52 -0800
 lib/beway/auction.rb	Wed, 05 Jan 2011 10:18:33 -0800
-lib/beway/cli_runner.rb	Tue, 04 Jan 2011 19:10:37 -0800
+lib/beway/cli_runner.rb	Thu, 27 Jan 2011 19:23:41 -0800
 lib/beway/bidder.rb	Tue, 04 Jan 2011 16:07:37 -0800
