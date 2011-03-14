@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.summary = "Simple UI and library for using Ruby to access ebay"
   s.description = File.read(File.join(File.dirname(__FILE__), 'README'))
   s.requirements = [ 'Ruby >= 1.9, some ruby gems (see README)' ]
-  s.version = "1.0.1"
+  s.version = "1.0.2"
   s.author = "Dibson T Hoffweiler"
   s.email = "dibson@hoffweiler.com"
   s.homepage = "http://www.hoffweiler.com/"
