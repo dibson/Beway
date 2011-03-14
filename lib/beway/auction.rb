@@ -84,6 +84,9 @@ module Beway
       if time_ar[0][/^\d+d$/] and time_ar[1][/^\d+h$/]
         # ["2d", "05h"] style
         return time_ar.join(' ')
+      elsif time_ar[1] =~ /^days?$/ and time_ar[3] =~ /^hours?$/
+        # ["1", "day", "18", "hours"]
+        return time_ar.join(' ')
       else
         # assume ["0", "h", "12", "m", "5", "s"] style
         raise AuctionParseError, "Didn't find hour marker where expected" unless time_ar[1] == 'h'

@@ -7,6 +7,42 @@ AUCTIONS_BIN = []
 AUCTIONS_COMPLETE = []
 
 AUCTIONS_VALID << {
+  :url => HTML_DIR + 'zoom-multi-track.html',
+  :description => 'ZOOM PS-04 Palmtop STUDIO Multi-track Recorder w Memory',
+  :current_bid => 'US $46.00',
+  :min_bid => 47.00,
+  :time_left => '1 day 14 hours',
+  :end_time => 'Mar 15, 2011 11:42:53 PDT',
+  :auction_number => '270717333271'
+}
+AUCTIONS_VALID << {
+  :url => HTML_DIR + 'skinny-jeans.html',
+  :description => 'ACNE Hep slim straight Black jeans 28 skinny',
+  :current_bid => 'US $10.00',
+  :min_bid => 10.50,
+  :time_left => '15h 55m 11s',
+  :end_time => '2011-03-14 13:10:47 -0700',
+  :auction_number => '190510549653'
+}
+AUCTIONS_VALID << {
+  :url => HTML_DIR + 'crescent-down-vest.html',
+  :description => 'Awesome Crescent Down Works by J Crew Vest!!! $265!!!',
+  :current_bid => 'US $61.00',
+  :min_bid => 62.00,
+  :time_left => '20h 9m 6s',
+  :end_time => '2011-03-14 17:25:06 -0700',
+  :auction_number => '170612954333'
+}
+AUCTIONS_VALID << {
+  :url => HTML_DIR + 'cashmere-pale-gray.html',
+  :description => 'J. Crew Wool Cashmere Pale Gray Cardigan. Size Small.',
+  :current_bid => 'US $22.00',
+  :min_bid => 22.00,
+  :time_left => '1 day 18 hours',
+  :end_time => 'Mar 15, 2011 14:26:35 PDT',
+  :auction_number => '290543793533'
+}
+AUCTIONS_VALID << {
   :url => HTML_DIR + 'off-white-sweater.html',
   :description => 'J CREW Hooded Sweater Off-White Cable Knit w Cashmere S',
   :current_bid => 'US $14.99',
