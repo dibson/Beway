@@ -9,34 +9,25 @@ Beway is a small Ruby library that:
 
 == Requirements
 
-Perhaps not requirements, but developed and tested with the
-following:
-
 - Ruby 1.9.2
-
-And these gems:
-
-- mechanize (1.0.0)
-- nokogiri (1.4.4)
-- rspec (2.4.0)
 
 == Installation
 
-Install your gems:
+  gem install beway
 
-  gem install mechanize rspec nokogiri
+== Running it
 
-Run the CLI interface
+  beway
 
-  ruby bin/beway
+== The source
 
-== Tests
+Install requirements with bundler
+
+  bundle install
 
 Make sure everything works as expected:
 
   rake spec
-
-== Docs
 
 Generate rdoc html:
 
