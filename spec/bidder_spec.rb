@@ -1,5 +1,19 @@
 require_relative '../lib/beway/bidder'
-require_relative './config'
+
+begin
+  require_relative './config'
+rescue LoadError => e
+  puts
+  puts "*" * 78
+  puts "This spec tests an eBay login.  Please copy the config.rb-dist file:"
+  puts
+  puts "  cp spec/config.rb-dist spec/config.rb"
+  puts
+  puts "and edit it with valid ebay credentials."
+  puts "*" * 78
+  puts
+  exit
+end
 
 describe Beway::Bidder do
 
@@ -19,10 +33,12 @@ describe Beway::Bidder do
       bidder.login
 
       if not bidder.logged_in
-        puts "\n" + "*" * 78
-        puts "Did you set your username and password in test/config.rb?"
-        puts "You should do so to get this test to pass"
+        puts
         puts "*" * 78
+        puts "Did you set your username and password in test/config.rb?"
+        puts "The test should pass if the login credentials are valid."
+        puts "*" * 78
+        puts
       end
       bidder.logged_in.should be_true
     end
