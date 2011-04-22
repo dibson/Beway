@@ -11,15 +11,14 @@ Beway is a small Ruby library that:
 
 - Ruby 1.9.2
 
-== Installation
+== Install and run
 
   gem install beway
-
-== Running it
-
   beway
 
 == The source
+
+Clone the source from git hub.
 
 Install requirements with bundler
 
@@ -29,6 +28,4 @@ Make sure everything works as expected:
 
   rake spec
 
-Generate rdoc html:
-
-  rake rdoc
+Open a ticket if you find anything funky
