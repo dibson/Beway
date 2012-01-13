@@ -51,7 +51,7 @@ module Beway
       raise EbayDataParseError, "Couldn't find time node" unless time_node
 
       time_str = time_node.inner_text
-      time_re = /(Sun|Mon|Tues|Wednes|Thurs|Fri|Satur)day, (January|February|March|April|May|June|July|August|September|October|December) \d\d, 20\d\d \d\d:\d\d:\d\d P[SD]T/
+      time_re = /(Sun|Mon|Tues|Wednes|Thurs|Fri|Satur)day, (January|February|March|April|May|June|July|August|September|October|November|December) \d\d, 20\d\d \d\d:\d\d:\d\d P[SD]T/
       raise EbayDataParseError, "Time in unexpected format: #{time_str}" unless time_re.match(time_str)
 
       Time.parse(time_str).localtime
