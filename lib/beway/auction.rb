@@ -64,7 +64,7 @@ module Beway
 
     # parsing method, returns a string
     def description
-      desc = @doc.at_css('b#mainContent h1')
+      desc = @doc.at_css('h1.vi-is1-titleH1')
       raise AuctionParseError, "Couldn't find description in document" if desc.nil?
       desc.inner_text.strip
     end
@@ -102,13 +102,11 @@ module Beway
     def min_bid
       return nil if complete?
 
-      max_label = @doc.at_xpath("//th/label[contains(text(),'Your max bid:')]")
-      raise AuctionParseError, "Couldn't find max bid label in document" unless max_label
-      min_bid_node = max_label.parent.parent.next_sibling
+      min_bid_node = @doc.at_css('form.vi-is1-s4-eu span.vi-c-fsmt')
       raise AuctionParseError, "Couldn't find minimum bid in document" unless min_bid_node
-      md = /\(Enter ([^)]*) or more\)/.match min_bid_node.inner_text
-      raise AuctionParseError, "Min Bid data not in expected format" if md.nil?
-      md[1][/\d*\.\d*/].to_f
+      match_data = min_bid_node.inner_text.match(/Enter ([^)]*) or more/)
+      raise AuctionParseError, "Min Bid data not in expected format. Got: #{min_bid_node.inner_text}" if match_data.nil?
+      match_data[1]
     end
 
     # parsing method, returns a Time object

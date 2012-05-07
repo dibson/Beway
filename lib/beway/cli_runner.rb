@@ -18,7 +18,6 @@ module Beway
     end
 
     def run
-      
       display_intro
 
       # login prep
@@ -61,7 +60,7 @@ module Beway
             puts "There was an error placing your bid:"
             puts
             puts "  " + e.message
-            puts 
+            puts
             puts "So sorry!"
             exit
           end
@@ -108,7 +107,7 @@ module Beway
     end
 
     def display_intro
-      puts "Welcome to Beway's CLI interface"
+      puts "Welcome to Beway Version #{VERSION}"
     end
 
     def display_auction(a)

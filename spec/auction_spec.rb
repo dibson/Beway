@@ -7,105 +7,19 @@ AUCTIONS_BIN = []
 AUCTIONS_COMPLETE = []
 
 AUCTIONS_VALID << {
-  :url => HTML_DIR + 'zoom-multi-track.html',
-  :description => 'ZOOM PS-04 Palmtop STUDIO Multi-track Recorder w Memory',
-  :current_bid => 'US $46.00',
-  :min_bid => 47.00,
-  :time_left => '1 day 14 hours',
-  :end_time => 'Mar 15, 2011 11:42:53 PDT',
-  :auction_number => '270717333271'
+  :url => HTML_DIR + 'kodak-film-old.html',
+  :description => 'Kodak Infrared, Kodacolor X, Kodachrome 8mm, Ektachrome E 120 Sealed Film',
+  :current_bid => 'US $9.50',
+  :min_bid => "US $10.00",
+  :time_left => '9h 36m 50s',
+  :end_time => 'May 07, 2012 18:16:22 PDT',
+  :auction_number => '230785267328'
 }
-AUCTIONS_VALID << {
-  :url => HTML_DIR + 'skinny-jeans.html',
-  :description => 'ACNE Hep slim straight Black jeans 28 skinny',
-  :current_bid => 'US $10.00',
-  :min_bid => 10.50,
-  :time_left => '15h 55m 11s',
-  :end_time => '2011-03-14 13:10:47 -0700',
-  :auction_number => '190510549653'
-}
-AUCTIONS_VALID << {
-  :url => HTML_DIR + 'crescent-down-vest.html',
-  :description => 'Awesome Crescent Down Works by J Crew Vest!!! $265!!!',
-  :current_bid => 'US $61.00',
-  :min_bid => 62.00,
-  :time_left => '20h 9m 6s',
-  :end_time => '2011-03-14 17:25:06 -0700',
-  :auction_number => '170612954333'
-}
-AUCTIONS_VALID << {
-  :url => HTML_DIR + 'cashmere-pale-gray.html',
-  :description => 'J. Crew Wool Cashmere Pale Gray Cardigan. Size Small.',
-  :current_bid => 'US $22.00',
-  :min_bid => 22.00,
-  :time_left => '1 day 18 hours',
-  :end_time => 'Mar 15, 2011 14:26:35 PDT',
-  :auction_number => '290543793533'
-}
-AUCTIONS_VALID << {
-  :url => HTML_DIR + 'off-white-sweater.html',
-  :description => 'J CREW Hooded Sweater Off-White Cable Knit w Cashmere S',
-  :current_bid => 'US $14.99',
-  :min_bid => 14.99,
-  :time_left => '2d 05h',
-  :end_time => 'Jan 07, 2011 15:00:44 PST',
-  :auction_number => '250749861707'
-}
-AUCTIONS_VALID << {
-  :url => HTML_DIR + 'pink-sweater-bid-bin.html',
-  :description => 'ALFANI  MENS SWEATER PINK SMALL  NEW WITH TAGS',
-  :current_bid => 'US $14.99',
-  :min_bid => 14.99,
-  :time_left => '3h 28m 33s',
-  :end_time => 'Dec 15, 2010 10:10:36 PST',
-  :auction_number => '250740721413'
-}
-AUCTIONS_VALID << {
-  :url => HTML_DIR + 'polo-lambs-wool.html',
-  :description => 'NEW POLO RALPH LAUREN SWEATER MENS SMALL S LAMBSWOOL',
-  :current_bid => 'US $27.00',
-  :min_bid => 28.00,
-  :time_left => '3h 35m 33s',
-  :end_time => 'Dec 15, 2010 10:20:09 PST',
-  :auction_number => '380297207180'
-}
-AUCTIONS_VALID << {
-  :url => HTML_DIR + 'xmas-sweater.html',
-  :current_bid => 'US $5.00',
-  :min_bid => 5.50,
-  :description => 'UGLY CHRISTMAS BIG BALLS SWEATER SZ S/M',
-  :time_left => '1h 2m 44s',
-  :end_time => 'Dec 15, 2010 07:42:16 PST',
-  :auction_number => '270680279290'
-}
-AUCTIONS_VALID << {
-  :url => HTML_DIR + 'pink-sweater-bid-bin.html',
-  :description => 'ALFANI  MENS SWEATER PINK SMALL  NEW WITH TAGS',
-  :current_bid => 'US $14.99',
-  :min_bid => 14.99,
-  :time_left => '3h 28m 33s',
-  :end_time => 'Dec 15, 2010 10:10:36 PST',
-  :auction_number => '250740721413'
-}
-AUCTIONS_VALID << {
-  :url => HTML_DIR + 'cashmere-sweater.html',
-  :description => 'Mens 100% CASHMERE SWEATER Gray 3 Button Collar L to XL',
-  :current_bid => 'US $52.01',
-  :min_bid => 53.01,
-  :time_left => '0h 3m 15s',
-  :end_time => 'Dec 26, 2010 20:36:09 PST',
-  :auction_number => '260710322149'
-}
-
+=begin
 AUCTIONS_BIN << {
   :url => HTML_DIR + 'mens-cardigans-dutch-bin.html',
   :description => "St. John's Bay man Cardigans Size: S, M, L, XL, 2XL NEW",
 }
-AUCTIONS_BIN << {
-  :url => HTML_DIR + 'spring-mercer-bin-mo.html',
-  :description => 'NWT Mens SPRING+MERCER L/S Shirt NEW Sz Small (S)',
-}
-
 AUCTIONS_COMPLETE << {
   :url => HTML_DIR + 'alfani-sweater-complete.html',
   :description => 'Alfani Grey V-Neck Merino Wool Size Small',
@@ -115,17 +29,7 @@ AUCTIONS_COMPLETE << {
   :end_time => 'Dec 26, 2010 20:09:00 PST',
   :auction_number => '270682427528',
 }
-AUCTIONS_COMPLETE << {
-  :url => HTML_DIR + 'cashmere-sweater-complete.html',
-  :description => 'Mens 100% CASHMERE SWEATER Gray 3 Button Collar L to XL',
-  :current_bid => 'US $52.01',
-  :min_bid => nil,
-  :time_left => nil,
-  :end_time => 'Dec 26, 2010 20:36:09 PST',
-  :auction_number => '260710322149'
-}
-
-
+=end
 
 describe Beway::Auction do
 
@@ -153,7 +57,7 @@ describe Beway::Auction do
       end
 
       it "should have the minimum bid" do
-        auction.min_bid.should eq(data[:min_bid])
+        auction.min_bid.should == data[:min_bid]
       end
     end
   end
@@ -204,5 +108,4 @@ describe Beway::Auction do
       end
     end
   end
-
 end
